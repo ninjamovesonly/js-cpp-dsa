@@ -1,11 +1,14 @@
-// does not work for negative rotateAmount
+// correct
 const rotateArray = (originalArray, rotateAmount) => {
   const reversedArray = reverseArrayUtilityFunction(originalArray);
   const arrayLength = originalArray.length - 1;
-  if (rotateAmount > originalArray.length) {
-    rotateAmount = rotateAmount % arrayLength;
+
+  let absRotateAmount = rotateAmount % arrayLength;
+
+  // if negative rotate amount add the length of array to get positive expected number of rotation
+  if (absRotateAmount < 0) {
+    absRotateAmount = absRotateAmount + originalArray.length;
   }
-  const absRotateAmount = Math.abs(rotateAmount);
 
   reversedArray.splice(
     0,
@@ -35,6 +38,6 @@ function reverseArrayUtilityFunction(arrayToReverse) {
   return arrayToReverse;
 }
 
-console.log(rotateArray([1, 10, 20, 0, 59, 86, 32, 11, 9, 40], -3)); // wrong output :(
+console.log(rotateArray([1, 10, 20, 0, 59, 86, 32, 11, 9, 40], -3));
 console.log(rotateArray([1, 10, 20, 0, 59, 86, 32, 11, 9, 40], 3));
 console.log(rotateArray([1, 10, 20, 0, 59, 86, 32, 11, 9, 40], 2));
