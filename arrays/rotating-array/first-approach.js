@@ -3,7 +3,7 @@ const rotateArray = (originalArray, rotateAmount) => {
   const reversedArray = reverseArrayUtilityFunction(originalArray);
   const arrayLength = originalArray.length - 1;
 
-  let absRotateAmount = rotateAmount % arrayLength;
+  let absRotateAmount = rotateAmount % originalArray.length;
 
   // if negative rotate amount add the length of array to get positive expected number of rotation
   if (absRotateAmount < 0) {
