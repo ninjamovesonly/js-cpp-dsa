@@ -1,4 +1,3 @@
-// splice shifts array index so currently inconsistent
 // first brute force approach
 let moveZerosToLeft = function (nums) {
   if (nums.length < 1) {
@@ -12,6 +11,8 @@ let moveZerosToLeft = function (nums) {
     if (nums[i] === 0) {
       zerosCount = zerosCount + 1;
       nums.splice(i, 1);
+      // move index one step back on deleting item
+      i = i - 1;
     }
   }
 
