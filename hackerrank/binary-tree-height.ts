@@ -1,34 +1,5 @@
-class BinaryTreeNode {
-  left: BinaryTreeNode | null;
-  right: BinaryTreeNode | null;
-  data: Number | null;
-
-  constructor(data: number | null) {
-    this.data = data;
-    this.left = null;
-    this.right = null;
-  }
-}
-
-class BinaryTree {
-  root: BinaryTreeNode | null;
-
-  constructor() {
-    this.root = null;
-  }
-
-  insert(node: BinaryTreeNode, data: number): BinaryTreeNode {
-    if (node === null) {
-      node = new BinaryTreeNode(data);
-    } else if (node.data && data < node.data) {
-      node.left = this.insert(node.left as BinaryTreeNode, data);
-    } else {
-      node.right = this.insert(node.right as BinaryTreeNode, data);
-    }
-
-    return node;
-  }
-}
+import { BinaryTree } from "../trees/binary-tree";
+import { BinaryTreeNode } from "../trees/binary-tree-node";
 
 function maxHeight(tree: BinaryTreeNode | null): number {
   if (tree === null) {
