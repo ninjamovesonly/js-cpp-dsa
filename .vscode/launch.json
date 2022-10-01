@@ -8,7 +8,7 @@
       "name": "ts-node code challenges",
       "type": "node",
       "request": "launch",
-      "args": ["${workspaceRoot}/hackerrank/binary-tree-height.ts"],
+      "args": ["${workspaceRoot}/hackerrank/level-order-traversal.ts"],
       "runtimeArgs": ["-r", "ts-node/register"],
       "internalConsoleOptions": "openOnSessionStart"
     }
