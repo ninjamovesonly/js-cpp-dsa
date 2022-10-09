@@ -10,7 +10,7 @@ class Graph {
 
     this.addEdge = addEdge;
     this.showGraph = showGraph;
-    this.bfs = bfs;
+    this.dfs = dfs;
     this.marked = [];
 
     for (var i = 0; i < this.vertices; i++) {
