@@ -1,3 +1,4 @@
+// wrong
 const knapsack = (profits, weights, capacity) => {
   let result = [0, 0];
   let mp = 0;
