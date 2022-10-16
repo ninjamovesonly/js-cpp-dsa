@@ -1,28 +1,24 @@
 const knapsack = (profits, weights, capacity) => {
-  let result = [0, 0];
-  let mp = 0;
-  let wc = 0;
+  const recursiveHelper = (profits, weights, capacity, idx) => {
+    if (capacity <= 0 || idx >= profits.length) return 0;
 
-  for (let i = 0; i < profits.length; i++) {
-    for (let x = i + 1; x < profits.length; x++) {
-      const prevwc = wc;
-      const prevwp = mp;
+    let profit1 = 0;
 
-      mp += profits[i] + profits[x];
-      wc += weights[i] + weights[x];
-
-      if (wc > capacity) {
-        mp = prevwp;
-        wc = prevwc;
-        result = [wc, mp];
-      } else {
-        result = [wc, mp];
-      }
+    if (weights[idx] <= capacity) {
+      profit1 =
+        profits[idx] +
+        recursiveHelper(profits, weights, capacity - weights[idx], idx + 1);
     }
-  }
+
+    const profit2 = recursiveHelper(profits, weights, capacity, idx + 1);
+
+    return Math.max(profit1, profit2);
+  };
+
+  return recursiveHelper(profits, weights, capacity, 0);
 };
 
-let profits = [1, 6, 10, 15];
+let profits = [1, 6, 10, 16];
 let weights = [1, 2, 3, 5];
 
 console.log(knapsack(profits, weights, 7));
