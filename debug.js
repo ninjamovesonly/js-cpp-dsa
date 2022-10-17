@@ -1,7 +1,3 @@
-let arr = [];
+let arr = { 1: "", 2: "" };
 
-if (!arr.length) {
-  console.log("if");
-} else {
-  console.log("else");
-}
+console.log("arr", Object.keys(arr).length);
