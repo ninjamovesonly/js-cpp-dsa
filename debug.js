@@ -1,3 +1,3 @@
-let arr = { 1: "", 2: "" };
+let arr = "";
 
-console.log("arr", Object.keys(arr).length);
+console.log("ned" > "nfd");
