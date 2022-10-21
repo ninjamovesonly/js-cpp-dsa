@@ -1,3 +1,3 @@
 let arr = "";
 
-console.log("ned" > "nfd");
+console.log(Math.abs(5 - 9));
