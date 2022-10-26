@@ -1,1 +1,1 @@
-console.log(["abcddefg"].join(""));
+console.log(6 % 6);
