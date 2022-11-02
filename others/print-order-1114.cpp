@@ -1,10 +1,14 @@
 #include <functional>
 #include <iostream>
 #include <thread>
+#include <mutex>
 using namespace std;
 
-function<void ()> test() {
-    cout << "testing" << endl;
+std::mutex m;
+int amount = 0;
+
+void test() {
+    ++amount;
 }
 
 class Foo {
@@ -13,7 +17,7 @@ public:
         
     }
 
-    void first(function<void()> printFirst) {
+    void first(void printFirst) {
         // printFirst() outputs "first". Do not change or remove this line.
         printFirst();
     }
@@ -34,7 +38,6 @@ public:
 
 int main()
 {
-    std::cout << "Hello World" << std::endl;
     test();
     Foo f;
     std::thread t([](int x){
