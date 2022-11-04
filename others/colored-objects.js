@@ -1,14 +1,27 @@
-// Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent,
-// with the colors in the order red, white, and blue.
+const sortColor = (arr) => {
+  let p1 = 0,
+    p2 = 0,
+    p3 = arr.length - 1;
 
-// We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+  while (p3 >= p1) {
+    if (arr[p1] === 0) {
+      const temp = arr[p1];
+      arr[p1] = arr[p2];
+      arr[p2] = temp;
+      p1++;
+      p2++;
+    } else if (arr[p1] === 2) {
+      const temp = arr[p1];
+      arr[p1] = arr[p3];
+      arr[p3] = temp;
+      p3--;
+    } else {
+      p1++;
+    }
+  }
 
-// You must solve this problem without using the library's sort function.
+  return arr;
+};
 
-// Example 1:					              i
-// Input: nums = [2,0,2,1,1,0]
-// Output: [0,0,1,1,2,2]
-
-// Example 2:
-// Input: nums = [2,0,1]
-// Output: [0,1,2]
+console.log(sortColor([2, 0, 2, 1, 1, 0]));
+console.log(sortColor([2, 0, 1]));
