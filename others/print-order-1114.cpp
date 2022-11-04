@@ -1,58 +1,33 @@
-#include <functional>
 #include <iostream>
-#include <thread>
-#include <mutex>
 using namespace std;
 
-std::mutex m;
-int amount = 0;
-
-void test() {
-    ++amount;
-}
-
 class Foo {
+private:
+    promise<void> p1;
+    promise<void> p2;
 public:
     Foo() {
-        
     }
 
-    void first(void printFirst) {
+    void first(function<void()> printFirst) {
+        
         // printFirst() outputs "first". Do not change or remove this line.
         printFirst();
+        p1.set_value();
     }
 
     void second(function<void()> printSecond) {
         
         // printSecond() outputs "second". Do not change or remove this line.
+        p1.get_future().get();
         printSecond();
+        p2.set_value();
     }
 
     void third(function<void()> printThird) {
         
         // printThird() outputs "third". Do not change or remove this line.
+        p2.get_future().get();
         printThird();
     }
 };
-
-
-int main()
-{
-    test();
-    Foo f;
-    std::thread t([](int x){
-        while(x-- > 0) {
-            cout << x << endl;
-        }
-    }, 10);
-
-    std::thread s([](int x){
-        while(x-- > 0) {
-            cout << x << endl;
-        }
-    }, 15);
-
-    s.join();
-    t.join();
-    return 0;
-}
