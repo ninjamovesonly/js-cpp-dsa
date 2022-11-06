@@ -6,7 +6,7 @@ function TaskRunner(concurrency) {
 }
 
 TaskRunner.prototype.push = function push(task) {
-  const idx = this.queue.indexOf(undefined) && this.queue.indexOf(undefined);
+  const idx = this.queue.indexOf(undefined);
   if (idx !== -1) {
     this.queue[idx] = taskRunner(task(), idx);
   } else {
@@ -14,7 +14,7 @@ TaskRunner.prototype.push = function push(task) {
   }
 };
 
-function recursionHelper(idx) {
+function execute(idx) {
   if (r.waitQueue.length === 0) return;
 
   const task = r.waitQueue.pop();
@@ -25,10 +25,10 @@ async function taskRunner(task, idx) {
   await task;
   r.queue[idx] = undefined;
 
-  const id = r.queue.indexOf(undefined) && r.queue.indexOf(undefined);
+  const id = r.queue.indexOf(undefined);
 
   if (id !== -1) {
-    recursionHelper(id);
+    execute(id);
   }
 }
 
