@@ -32,6 +32,6 @@ int main()
   Solution s;
   vector<int> a1 = {2, 0, 2, 1, 1, 0};
   vector<int> a2 = {2, 0, 1};
-  s.sortColors(a1);
+  cout << s.sortColors(a1) << endl;
   s.sortColors(a2);
 }
